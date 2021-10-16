@@ -1,6 +1,6 @@
 # Matsutake REST Client
 
-Module for interacting with the [matsutake.io](https://www.matsutake.io) REST API. Submits tranactions to the Chia Blockchain.
+Module for interacting with the [matsutake.io](https://www.matsutake.io) REST API. Submits transactions to the Chia Blockchain.
 
 ```TypeScript
 import { transaction } from '@matsutake/rest-client';

@@ -7,11 +7,19 @@
     "test": "jest .",
     "prepare": "tsc"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matsutake-io/rest-client.git"
+  },
   "keywords": [
     "chia"
   ],
   "author": "Taro",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matsutake-io/rest-client/issues"
+  },
+  "homepage": "https://github.com/matsutake-io/rest-client",
   "devDependencies": {
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.0",
