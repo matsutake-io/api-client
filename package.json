@@ -1,6 +1,6 @@
 {
   "name": "@matsutake/api-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "matsutake.io REST API client",
   "main": "index.js",
   "scripts": {
