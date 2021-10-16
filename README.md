@@ -3,7 +3,7 @@
 Module for interacting with the [matsutake.io](https://www.matsutake.io) REST API. Submits transactions to the Chia Blockchain.
 
 ```TypeScript
-import { transaction } from '@matsutake/rest-client';
+import { transaction } from '@matsutake/api-client';
 
 await transaction.push({
     spend_bundle: {
