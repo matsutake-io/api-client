@@ -1,5 +1,5 @@
 import * as nock from 'nock';
-import { transaction } from './transaction';
+import { transaction } from '../transaction';
 
 const exampleTransaction = {
     spend_bundle: {
