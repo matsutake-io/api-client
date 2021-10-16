@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/matsutake-io/rest-client.git"
+    "url": "git+https://github.com/matsutake-io/api-client.git"
   },
   "keywords": [
     "chia"
@@ -17,9 +17,9 @@
   "author": "Taro",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/matsutake-io/rest-client/issues"
+    "url": "https://github.com/matsutake-io/api-client/issues"
   },
-  "homepage": "https://github.com/matsutake-io/rest-client",
+  "homepage": "https://github.com/matsutake-io/api-client",
   "devDependencies": {
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.0",
@@ -38,7 +38,7 @@
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
-    "restoreMocks": true,
+    "apioreMocks": true,
     "globals": {
       "ts-jest": {
         "tsconfig": "tsconfig.json",
