@@ -1,14 +1,9 @@
 import axios from 'axios';
+import { Coin } from './Coin';
 import { config } from './config';
 
 const API_VERSION = 'v1';
 const ENDPOINT = '/transaction';
-
-interface Coin {
-    amount: number;
-    parent_coin_info: string;
-    puzzle_hash: string;
-}
 
 interface CoinSpend {
     coin: Coin;
