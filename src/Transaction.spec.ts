@@ -1,5 +1,5 @@
 import * as nock from 'nock';
-import { transaction } from '../transaction';
+import { Matsutake } from '..';
 
 const exampleTransaction = {
     spend_bundle: {
@@ -19,39 +19,46 @@ const exampleTransaction = {
 describe('transaction', () => {
     describe('push', () => {
         it('sends transaction to matsutake.io REST API', async () => {
-            nock(`https://api.matsutake.io/v1`)
+            nock(`https://testnet-api.matsutake.io/v1`)
                 .defaultReplyHeaders({ 'access-control-allow-origin': '*' })
                 .post('/transaction', exampleTransaction)
                 .reply(200, { status: 'success' });
-
+            
+            const transaction = new Matsutake('testnet').transaction;
             const result = await transaction.push(exampleTransaction);
 
             expect(result).toEqual({ status: 'success' });
         });
 
         it('fails due to client side error', async () => {
-            nock(`https://api.matsutake.io/v1`)
+            nock(`https://testnet-api.matsutake.io/v1`)
                 .defaultReplyHeaders({ 'access-control-allow-origin': '*' })
                 .post('/transaction', exampleTransaction)
                 .reply(400, { status: 'failed' });
+
+            const transaction = new Matsutake('testnet').transaction;
 
             expect(() => transaction.push(exampleTransaction)).rejects.toThrow(new Error('Request was rejected by full node'));
         });
 
         it('fails due to full node rejection of payload', async () => {
-            nock(`https://api.matsutake.io/v1`)
+            nock(`https://testnet-api.matsutake.io/v1`)
                 .defaultReplyHeaders({ 'access-control-allow-origin': '*' })
                 .post('/transaction', exampleTransaction)
                 .reply(200, { status: 'failed' });
+
+            const transaction = new Matsutake('testnet').transaction;
 
             expect(() => transaction.push(exampleTransaction)).rejects.toThrow(new Error('Request was rejected by full node'));
         });
 
         it('fails due to server side error', async () => {
-            nock(`https://api.matsutake.io/v1`)
+            nock(`https://testnet-api.matsutake.io/v1`)
                 .defaultReplyHeaders({ 'access-control-allow-origin': '*' })
                 .post('/transaction', exampleTransaction)
                 .reply(500, 'Internal server error');
+
+            const transaction = new Matsutake('testnet').transaction;
 
             expect(() => transaction.push(exampleTransaction)).rejects.toThrow(new Error('Request was rejected by full node'));
         });
