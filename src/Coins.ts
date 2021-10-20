@@ -1,4 +1,4 @@
-import { URLSearchParams } from 'url';
+import { stringify } from 'querystring';
 import axios from 'axios';
 import { Coin } from './Coin';
 import { config } from './config';
@@ -37,12 +37,12 @@ export class Coins {
         }
     
         try {
-            const query = new URLSearchParams({
+            const query = stringify({
                 ...(options.start_height ? { start_height: options.start_height.toString() } : {}),
                 ...(options.end_height ? { end_height: options.end_height.toString() } : {}),
                 ...(options.include_spent_coins ? { include_spent_coins: options.include_spent_coins.toString() } : {})
             });
-            const { status, data } = await axios.get<GetCoinsResponse>(`${config.protocol}://${this.network}-api.matsutake.io/${this.API_VERSION}${this.ENDPOINT}/${options.puzzle_hash}${query.toString() ? `?${query.toString()}` : ''}`);
+            const { status, data } = await axios.get<GetCoinsResponse>(`${config.protocol}://${this.network}-api.matsutake.io/${this.API_VERSION}${this.ENDPOINT}/${options.puzzle_hash}${query ? `?${query}` : ''}`);
     
             if (status === 200 && data.status === 'success') {
                 return data;
